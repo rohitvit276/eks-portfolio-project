@@ -11,7 +11,7 @@ I will be running this project as a lab hence the instance will be t3.medium. We
 | EKS Control Plane | $73.00 | Standard support tier ($0.10/hr). |
 | Compute (1x t3.medium) | ~$30.37 | On-Demand pricing ($0.0416/hr). |
 | Storage (20 GB gp3) | $1.60 | $0.08 per GB/month (20 × 0.08). |
-| Total (Approximate) | ~$105.77 | Excluding data transfer/logs. |
+| Total (Approximate) | ~$104.97 | Excluding data transfer/logs. |
 
 ## Removed the SSH Block because:
 
