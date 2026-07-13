@@ -1,0 +1,7 @@
+# never commit keys or credentials
+*.pem
+*.key
+.env
+
+# local kubeconfig exports
+kubeconfig*
