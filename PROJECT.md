@@ -50,3 +50,8 @@ level: scheduling, VPC CNI networking, identity, autoscaling, upgrades, cost.
   keys moved out to `~\.ssh`; PROJECT.md + .gitignore scaffolded. State before this:
   one commit (README only), untracked `cluster.yaml` (eksctl config, K8s 1.31 —
   outdated). Assignment 1 issued.
+- 2026-07-13 (later) — A1 review round 1: version bump to 1.35 with N-1 reasoning
+  PASSED; git hygiene PASSED. Revisions needed: (a) ssh block still in cluster.yaml
+  — the SSM trap untouched; (b) cost calc is a hosted screenshot, needs plain
+  markdown table; (c) notes missing SSH-replacement paragraph, eksctl surprise,
+  and N-1 trade-off answer; (d) typos. Assignment stays open.

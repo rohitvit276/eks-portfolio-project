@@ -13,6 +13,3 @@ managedNodeGroups:
     maxSize: 2
     desiredCapacity: 1
     volumeSize: 20
-    ssh:
-      allow: true
-      publicKeyName: eks-keypair
