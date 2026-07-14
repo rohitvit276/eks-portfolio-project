@@ -79,3 +79,17 @@ level: scheduling, VPC CNI networking, identity, autoscaling, upgrades, cost.
   checked before attaching); kube-system table pasted, lists metrics-server +
   vpc-resource-controller which a default EKS cluster doesn't run. Fix = run the
   drill AGAIN documenting live, write notes/02-first-bringup.md. A2 stays open.
+- 2026-07-14 (A2 round 2) — Second full cycle done; account verified clean again.
+  Mid-cycle Claude debugged user's SSM failure: session-manager-plugin missing
+  locally (the A2 hint). notes/02 now has real evidence: budget name, 18-min
+  timing via `time`, both CFN stacks, describe-instance-information + live
+  session, real kube-system output. CORRECTION owned by Claude: metrics-server
+  IS default now (user's output proved round-1 review wrong; eksctl default
+  addon). Still open (writing only, no AWS): (1) "Real Surprise" pasted verbatim
+  from round 1 incl. old instance id — pods-vs-nodes rewrite still not done
+  (2nd flag); (2) was AmazonSSMManagedInstanceCore already attached? unanswered
+  (2nd flag), Step 2 may document a non-step; (3) "caps at USD 10" — budgets
+  alert, don't stop spend; verify no budget action confusion; (4) teardown
+  verification + orphan-risk line missing; (5) stale pasted table in notes/01
+  to delete. Bonus quiz posed: why 74m Completed + 17m Running pod generations
+  (node replacement mystery — A3 preview).
