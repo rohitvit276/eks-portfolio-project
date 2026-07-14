@@ -3,7 +3,7 @@
 
 **To Open SSH Shell, we can follow below steps:**
 
-Step 1: Identify the IAM role used by **managedNodeGroups**. Our role named as **eksctl-portfolio-cluster-cluster-ServiceRole-XXXX**
+Step 1: Identify the IAM role used by **managedNodeGroups**. Our role named as **NodeInstanceRole-XXXX**
 Step 2: Attach the **AmazonSSMManagedInstanceCore** managed policy to that role.  
 Step 3: Once the policy is attached, nodes will appear in the **AWS Systems Manager** > **Fleet Manager console** under **"Managed Instances."** From here we can then select a node and click "Start session" to get a shell.  
 
