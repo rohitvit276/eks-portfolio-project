@@ -33,8 +33,8 @@ level: scheduling, VPC CNI networking, identity, autoscaling, upgrades, cost.
 
 | # | Assignment | Status |
 |---|-----------|--------|
-| 1 | Cluster config redesign (no AWS spend) — fix `cluster.yaml`: current K8s version, SSM instead of SSH, cost math | **ISSUED 2026-07-13** |
-| 2 | First bring-up + teardown drill — create the cluster, inventory everything eksctl actually made (CloudFormation, VPC, ENIs), delete it, verify $0 left | pending |
+| 1 | Cluster config redesign (no AWS spend) — fix `cluster.yaml`: current K8s version, SSM instead of SSH, cost math | **CLOSED 2026-07-13** |
+| 2 | First bring-up + teardown drill — budget alert first; create cluster, inventory everything eksctl made (CloudFormation, VPC, IAM), kube-system pod roles, live SSM shell onto node (carried from A1), delete + verify zero residue | **ISSUED 2026-07-13** |
 | 3 | Workload fundamentals — Deployment/Service/probes/requests+limits; deliberately break scheduling and debug a `Pending` pod | pending |
 | 4 | Networking deep dive — VPC CNI, pod IP math, prefix delegation; ALB controller + Ingress | pending |
 | 5 | Identity & security — EKS Pod Identity, least-privilege pod→S3, NetworkPolicy egress control | pending |
@@ -55,3 +55,15 @@ level: scheduling, VPC CNI networking, identity, autoscaling, upgrades, cost.
   — the SSM trap untouched; (b) cost calc is a hosted screenshot, needs plain
   markdown table; (c) notes missing SSH-replacement paragraph, eksctl surprise,
   and N-1 trade-off answer; (d) typos. Assignment stays open.
+- 2026-07-13 (round 2) — ssh block removed from cluster.yaml ✓, cost table now
+  proper markdown ✓. Still open: notes explain why SSH was removed but never name
+  SSM or how node access works now (core concept unproven); 20GB (yaml) vs 30GB
+  (cost table) mismatch; eksctl surprise + N-1 deadline answer missing; "chages"
+  typo (2nd flag).
+- 2026-07-13 (round 3) — A1 CLOSED. Typo, 20GB consistency, and 1.35 deadline
+  (27 Mar 2027) all fixed. SSM answer still one-liner and eksctl "surprise" was
+  version strategy not schema — both converted to hands-on criteria in A2 rather
+  than more prose loops. A2 ISSUED: budget alert → bring-up (timed) → inventory
+  CFN/VPC/IAM → kube-system pod roles → live SSM session (the A1 carry-over) →
+  teardown with zero-residue verification → notes/02. User deliberately keeping
+  PROJECT.md unpushed for now (his call; recommended pushing for cross-device).
