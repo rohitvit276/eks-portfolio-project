@@ -40,7 +40,7 @@ The kube-system namespace contains the "brain" and "nervous system" of the clust
 **coredns**	Handles DNS resolution within the cluster. Allows pods to find each other by name (e.g., my-app.default.svc.cluster.local).
 **kube-proxy**	Runs on every node. Manages networking rules, ensuring that traffic reaches the correct containers.
 **vpc-resource-controller**	EKS-specific. Manages the assignment of VPC IP addresses to pods (ENI management).
-**aws-node (VPC CNI)**	The plugin that integrates Kubernetes networking with the AWS VPC, giving each pod its own IP address within your VPC.
+**aws-node (VPC CNI)**	The plugin that integrates Kubernetes networking with the AWS VPC, giving each pod its own IP address within the VPC.
 **metrics-server**	Gathers CPU/Memory performance data for nodes and pods, enabling kubectl top commands.
 
 ## Opening SSH Shell:
