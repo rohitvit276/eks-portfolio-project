@@ -67,3 +67,15 @@ level: scheduling, VPC CNI networking, identity, autoscaling, upgrades, cost.
   CFN/VPC/IAM → kube-system pod roles → live SSM session (the A1 carry-over) →
   teardown with zero-residue verification → notes/02. User deliberately keeping
   PROJECT.md unpushed for now (his call; recommended pushing for cross-device).
+- 2026-07-14 — A2 round 1: user did a full bring-up AND teardown (Claude verified
+  account clean: no clusters, no CFN stacks) and pushed PROJECT.md ✓. But most
+  criteria undocumented: no budget name, no timing, no eksctl inventory, no SSM
+  command, no teardown proof, no notes/02 (content went into notes/01). Two
+  concept gaps taught: (a) pods vs nodes — user expected to shell into pods,
+  must rewrite own-words after it clicks; (b) SSM session ≠ SSH — user keeps
+  saying "SSHed"; no port 22, agent polls SSM API outbound. Notes problems:
+  SSM steps cite the CLUSTER ServiceRole instead of the NodeInstanceRole (and
+  eksctl attaches AmazonSSMManagedInstanceCore by default — asked whether he
+  checked before attaching); kube-system table pasted, lists metrics-server +
+  vpc-resource-controller which a default EKS cluster doesn't run. Fix = run the
+  drill AGAIN documenting live, write notes/02-first-bringup.md. A2 stays open.
