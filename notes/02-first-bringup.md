@@ -67,7 +67,7 @@ metrics-server-7b78764d44-jq7xp   0/1     Completed   0          70m
 
 **Real Surprise**
 
-Once I did kubectl get pods it listed 5-6 pods, and I didn't notice all their names, at this point I was thinking that I will be able to SSH to all of them but I found out that only one node can be SSHed -  i-01adda5aa65c8367e (portfolio-cluster-standard-nodes-Node).
+Once I did kubectl get pods it listed 5-6 pods, and I didn't notice all their names, at this point I was thinking that I will be able to connect to all these nodes, but I was able to connect only a single node using SSM.
 
 ## To Delete the Cluster:
 
