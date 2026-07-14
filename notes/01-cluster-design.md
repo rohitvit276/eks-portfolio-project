@@ -30,5 +30,27 @@ As per AWS records the version End of Support Date is **27th March 2027.**
 
 In that case we can use AWS SSM Session Manager to open a session.
 
+## After the cluster is brought up.
+
+The kube-system namespace contains the "brain" and "nervous system" of the cluster. These pods are not our applications; they are the services that keep Kubernetes running. Understanding Each node in kubesystem, explained below:
 
 
+**Pod	Role**
+
+**coredns**	Handles DNS resolution within the cluster. Allows pods to find each other by name (e.g., my-app.default.svc.cluster.local).
+**kube-proxy**	Runs on every node. Manages networking rules, ensuring that traffic reaches the correct containers.
+**vpc-resource-controller**	EKS-specific. Manages the assignment of VPC IP addresses to pods (ENI management).
+**aws-node (VPC CNI)**	The plugin that integrates Kubernetes networking with the AWS VPC, giving each pod its own IP address within your VPC.
+**metrics-server**	Gathers CPU/Memory performance data for nodes and pods, enabling kubectl top commands.
+
+## Opening SSH Shell:
+
+**To Open SSH Shell, we can follow below steps:**
+
+Step 1: Identify the IAM role used by **managedNodeGroups**. Our role named as **eksctl-portfolio-cluster-cluster-ServiceRole-XXXX**
+Step 2: Attach the **AmazonSSMManagedInstanceCore** managed policy to that role.  
+Step 3: Once the policy is attached, nodes will appear in the **AWS Systems Manager** > **Fleet Manager console** under **"Managed Instances."** From here we can then select a node and click "Start session" to get a shell.  
+
+**Real Surprise**
+
+Once I did kubectl get pods it listed 5-6 pods, and I didn't notice all their names, at this point I was thinking that I will be able to SSH to all of them but I found out that only one node can be SSHed -  i-01adda5aa65c8367e (portfolio-cluster-standard-nodes-Node).
