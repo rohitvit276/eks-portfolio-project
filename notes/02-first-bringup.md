@@ -1,6 +1,6 @@
 ## Budget Details:
 
-**eks-buget-list** created which alerts at $8 and caps at USD 10. 
+**eks-buget-list** created which alerts at $8 and the upper limit is USD 10. 
 
 ## Cloudformation Stack Inventory:
 The cluster.yaml created two cloudformation stacks as below:
@@ -19,6 +19,8 @@ The cluster.yaml created two cloudformation stacks as below:
 Step 1: Identify the IAM role used by **managedNodeGroups**. Our role named as **NodeInstanceRole-XXXX**
 Step 2: Attach the **AmazonSSMManagedInstanceCore** managed policy to that role.  
 Step 3: Once the policy is attached, nodes will appear in the **AWS Systems Manager** > **Fleet Manager console** under **"Managed Instances."** From here we can then select a node and click "Start session" to get a shell.  
+
+So during the first run I had to follow above steps to attach the policy AmazonSSMManagedInstanceCore manually, but the second time when I brought up the cluster again, it was already attached to the role. So I didn't have to anything manually here.
  ## OR follow below for a CLI Session.
 Step 4: Install SSM CLI from this URL https://s3.amazonaws.com/session-manager-downloads/plugin/latest/windows/SessionManagerPluginSetup.exe.
 Step 5: Check instances available to SSM:
@@ -70,3 +72,25 @@ Once I did kubectl get pods it listed 5-6 pods, and I didn't notice all their na
 ## To Delete the Cluster:
 
 Run eksctl delete cluster -f cluster.yaml 
+
+**Tearddown proof:**
+
+2026-07-14 14:36:51 [ℹ]  waiting for CloudFormation stack "eksctl-portfolio-cluster-nodegroup-standard-nodes"
+2026-07-14 14:37:22 [ℹ]  waiting for CloudFormation stack "eksctl-portfolio-cluster-nodegroup-standard-nodes"
+2026-07-14 14:38:09 [ℹ]  waiting for CloudFormation stack "eksctl-portfolio-cluster-nodegroup-standard-nodes"
+2026-07-14 14:39:09 [ℹ]  waiting for CloudFormation stack "eksctl-portfolio-cluster-nodegroup-standard-nodes"
+2026-07-14 14:40:19 [ℹ]  waiting for CloudFormation stack "eksctl-portfolio-cluster-nodegroup-standard-nodes"
+2026-07-14 14:42:03 [ℹ]  waiting for CloudFormation stack "eksctl-portfolio-cluster-nodegroup-standard-nodes"
+2026-07-14 14:43:31 [ℹ]  waiting for CloudFormation stack "eksctl-portfolio-cluster-nodegroup-standard-nodes"
+2026-07-14 14:43:32 [ℹ]  will delete stack "eksctl-portfolio-cluster-cluster"
+2026-07-14 14:43:32 [ℹ]  waiting for stack "eksctl-portfolio-cluster-cluster" to get deleted
+2026-07-14 14:43:32 [ℹ]  waiting for CloudFormation stack "eksctl-portfolio-cluster-cluster"
+2026-07-14 14:44:03 [ℹ]  waiting for CloudFormation stack "eksctl-portfolio-cluster-cluster"
+2026-07-14 14:44:36 [ℹ]  waiting for CloudFormation stack "eksctl-portfolio-cluster-cluster"
+2026-07-14 14:45:41 [ℹ]  waiting for CloudFormation stack "eksctl-portfolio-cluster-cluster"
+2026-07-14 14:45:42 [✔]  all cluster resources were deleted
+
+## Completed vs Running Pods:
+
+**Completed Pods** - Are the ones which have fulfilled there taks and have exited. 
+**Running Pods** - These are the pods that are still running some processes thats why they are up for the last 17 minutes only.
