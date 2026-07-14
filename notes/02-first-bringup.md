@@ -7,6 +7,11 @@ The cluster.yaml created two cloudformation stacks as below:
  **eksctl-portfolio-cluster-cluster**
  **eksctl-portfolio-cluster-nodegroup-standard-nodes**
 
+ ## To bring up the cluster:
+  Run **eksctl create cluster -f cluster.yaml**
+
+  Running **time eksctl create cluster -f cluster.yaml** will also give the total time taken during startup. In our case it took around 18 minutes.
+
 ## Opening SSM Session:
 
 **To Open SSM Session, we can follow below steps:**
@@ -61,3 +66,7 @@ metrics-server-7b78764d44-jq7xp   0/1     Completed   0          70m
 **Real Surprise**
 
 Once I did kubectl get pods it listed 5-6 pods, and I didn't notice all their names, at this point I was thinking that I will be able to SSH to all of them but I found out that only one node can be SSHed -  i-01adda5aa65c8367e (portfolio-cluster-standard-nodes-Node).
+
+## To Delete the Cluster:
+
+Run eksctl delete cluster -f cluster.yaml 
